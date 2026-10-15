@@ -1,0 +1,94 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>مذكرة مراجعة دراسة الممارسات الأمنية</title><style>.ref{white-space:nowrap}.footer span:last-child{direction:ltr;unicode-bidi:isolate}
+@page{size:Letter;margin:0}*{box-sizing:border-box}body{margin:0;background:#eceef0;font-family:Arial,sans-serif;color:#111;font-size:13.1pt;line-height:1.52}.sheet{position:relative;width:8.5in;height:11in;margin:22px auto;background:white;padding:.60in .68in .58in;break-after:page}.sheet:last-child{break-after:auto}.content{height:9.53in}h1{font-size:20pt;line-height:1.3;font-weight:700;color:#000;margin:0 0 12px}h2{font-size:14.3pt;color:#000;line-height:1.35;margin:15px 0 5px;font-weight:700}p{margin:0 0 10px}.subtitle{font-size:13pt;color:#333;margin-bottom:13px}.paper-title{direction:ltr;text-align:left;font-size:12.2pt;line-height:1.35;margin-bottom:9px}.meta{font-size:11.1pt;color:#444;margin-bottom:12px}.small{font-size:10.4pt;line-height:1.45;color:#333}table{border-collapse:collapse;width:100%;margin:10px 0 12px;table-layout:fixed;font-size:12.1pt;line-height:1.45}th,td{border:1px solid #d9d9d9;padding:8px 10px;vertical-align:middle;text-align:right}th{background:#dce8ef;color:#000;font-weight:700}tbody tr:nth-child(even){background:#f7f8f9}.facts{font-size:11.8pt}.question h2{margin-top:12px;font-size:13.5pt}.question p{margin-bottom:6px;font-size:12.4pt;line-height:1.46}.footer{position:absolute;bottom:.27in;left:.68in;right:.68in;font-size:10pt;color:#555;display:flex;justify-content:space-between;align-items:center}a{color:#174f74;text-decoration:underline}bdi{unicode-bidi:isolate}strong{font-weight:700}@media screen and (max-width:850px){.sheet{margin:12px auto;max-width:100%;height:auto;min-height:11in}.content{height:auto;min-height:9.53in}.footer{position:relative;bottom:auto;left:auto;right:auto;margin-top:20px}}@media print{body{background:white}.sheet{margin:0}a{color:#174f74}h1,h2,p,table,.question{orphans:2;widows:2}}
+bdi{white-space:nowrap}</style></head><body><section class="sheet"><main class="content"><h1>مذكرة مراجعة دراسة الممارسات الأمنية</h1>
+<p class="subtitle">شرح من البداية ومراجعة قبل السمينار</p>
+<p class="paper-title" data-paper>Do Software Security Practices Yield Fewer Vulnerabilities?</p>
+<p class="meta" data-paper><bdi dir="ltr">Nusrat Zahan, Shohanuzzaman Shohan, Dan Harris, Laurie Williams</bdi><br><bdi dir="ltr">ICSE-SEIP 2023</bdi> · 12 صفحة أصلية</p>
+<p>السؤال بالعربية: هل ترتبط الممارسات الأمنية الأفضل بثغرات مبلّغ عنها أقل؟ هذه المذكرة تجمع الحقائق المرجعية مع شرح تعليمي مستقل. جميع الأمثلة والأرقام التوضيحية موسومة بأنها افتراضية.</p>
+<h2>بطاقة الدراسة</h2>
+<table class="facts"><colgroup><col style="width:24%"><col></colgroup><thead><tr><th>المحور</th><th>ما تحتاج إلى تذكره</th></tr></thead><tbody data-paper>
+<tr><td>الطريقة</td><td>تحليل درجات أداة قياس الممارسات <bdi dir="ltr">Scorecard</bdi> وأعداد الثغرات في <bdi dir="ltr">OSV/Snyk</bdi> لحزم <bdi dir="ltr">npm/PyPI</bdi> على <bdi dir="ltr">GitHub</bdi>. ص <bdi dir="ltr">4-6</bdi></td></tr>
+<tr><td>العينة</td><td>2,422 حزمة لها ثغرات مسجلة؛ 2,268 بعد تنقية تحليل الممارسات. ص <bdi dir="ltr">5-6</bdi></td></tr>
+<tr><td>الدرجات</td><td><bdi dir="ltr">0-10</bdi>؛ الإجمالي متوسط مرجح بالخطر؛ <bdi dir="ltr">-1</bdi> غير حاسم. ص2</td></tr>
+<tr><td>توصيات الباحثين</td><td>الصيانة النشطة <bdi dir="ltr">(Maintained)</bdi>؛ مراجعة الكود <bdi dir="ltr">(Code Review)</bdi>؛ حماية الفروع <bdi dir="ltr">(Branch Protection)</bdi>؛ سياسة أمنية منشورة <bdi dir="ltr">(Security Policy)</bdi>. ص9</td></tr>
+<tr><td>الإجمالي</td><td>ارتبط ارتفاعه بزيادة الثغرات المبلّغ عنها، ضمن العينة. ص8</td></tr>
+</tbody></table>
+<p class="small"><strong>مصطلحات البيانات:</strong> الحزمة البرمجية كود جاهز يمكن استخدامه في مشروع آخر، مثل مكتبة لمعالجة الصور. <bdi dir="ltr">npm</bdi> سجل حزم يرتبط أساسًا بـ<bdi dir="ltr">JavaScript</bdi>، و<bdi dir="ltr">PyPI</bdi> سجل حزم <bdi dir="ltr">Python</bdi>.</p>
+<h2>الفكرة التي تبدأ منها</h2>
+<p><strong>الممارسة</strong> إجراء مثل مراجعة الكود. <strong>مؤشر تطبيقها</strong> معلومة أو درجة ينتجها الفحص. <strong>النتيجة الأمنية</strong> شيء نريد تقييمه، مثل أعداد الثغرات المسجلة. لا تخلط بين وجود الإجراء وجودة تنفيذه وبين سلامة البرنامج.</p>
+<p>مثال تعليمي: اشتراط مراجعة التغييرات يثبت وجود شرط للمراجعة، لكنه لا يكشف وحده جودة كل مراجعة أو جميع الأخطاء التي قد تفوت المراجع.</p>
+<p><strong>طريقة الاستخدام:</strong> إذا نسيت دور النموذج، ابدأ بالصفحة الثانية. الأرقام وتفسيرها في الثالثة، والقيود في الرابعة، والأسئلة في الخامسة، والتطبيق على مشروعنا والمصادر في السادسة.</p></main><footer class="footer"><span>مراجعة دراسة الممارسات الأمنية</span><span>1 / 6</span></footer></section><section class="sheet"><main class="content"><h1>دور النموذج: مثال الجامعة أولًا</h1>
+<p class="subtitle">النموذج المستخدم للتقدير يحاول استخراج علاقة بين أرقام</p>
+<h2>مثال تعليمي بعيد عن الأمن</h2>
+<p>تريد جامعة معرفة هل الطلاب الذين يدرسون ساعات أكثر يحصلون عادة على درجات أعلى. تجمع لكل طالب عدد ساعات الدراسة ودرجة الامتحان. تعطي البرنامج هذه البيانات فيحاول تعلّم العلاقة بينها.</p>
+<p>بعد التدريب، تخبره أن طالبًا آخر درس خمس ساعات، فيقدّر درجته. البرنامج لم يصحح امتحان الطالب؛ أعطى توقعًا اعتمادًا على البيانات السابقة. نقارن التوقع بدرجة الامتحان الفعلية لمعرفة جودة تقديره.</p>
+<h2>نطبق المثال على بيانات أمنية افتراضية</h2>
+<p>نستخدم درجات الممارسات بدل ساعات الدراسة، وعدد الثغرات المبلّغ عنها بدل درجة الامتحان. الأرقام التالية للتوضيح فقط:</p>
+<table><colgroup><col style="width:13%"><col style="width:27%"><col style="width:27%"><col></colgroup><thead><tr><th>الحزمة</th><th>درجة المراجعة</th><th>درجة حماية الفرع</th><th>عدد الثغرات المسجلة</th></tr></thead><tbody>
+<tr><td><bdi dir="ltr">A</bdi></td><td>9</td><td>8</td><td>3</td></tr>
+<tr><td><bdi dir="ltr">B</bdi></td><td>4</td><td>2</td><td>8</td></tr>
+<tr><td><bdi dir="ltr">C</bdi></td><td>8</td><td>9</td><td>4</td></tr>
+</tbody></table>
+<p><strong>أثناء التدريب:</strong> يرى النموذج الدرجات والأعداد المسجلة معًا، ويستخرج أنماطًا تساعده على التقدير.</p>
+<p><strong>أثناء الاختبار:</strong> نعطيه درجات حزمة أخرى ونحجب عنه عدد ثغراتها المسجلة. لو قدّر العدد بثلاثة، وكان المسجل خمسة، نقارن العددين لتقييم الأداء.</p>
+<h2>ما الذي يعنيه العدد الناتج</h2>
+<p><strong>العدد المتوقع لا يحدد مكان ثغرة أو نوعها ولا يثبت وجودها.</strong> هذا المثال يعتمد على ثغرات مسجلة أصلًا. تحسن التقدير يعني أن النموذج يمثل النمط في البيانات بصورة أفضل، ويحتاج تعميمه على حالات جديدة إلى تحقق.</p>
+<p><strong>الفكرة:</strong> نسأل هل المعلومات عن الممارسات تساعد في تقدير الأعداد؛ أما الكشف عن مشكلة محددة فيحتاج إلى فحص وأدلة من نوع آخر.</p></main><footer class="footer"><span>مراجعة دراسة الممارسات الأمنية</span><span>2 / 6</span></footer></section><section class="sheet"><main class="content"><h1>طريقة التحليل ومعنى الأرقام</h1>
+<p data-paper>في <bdi dir="ltr">RQ1</bdi>: أربعة نماذج، تسع درجات مختارة؛ تدريب 70% واختبار 30%، وتحقق متقاطع أثناء التدريب. في <bdi dir="ltr">RQ2</bdi>: نموذج للإجمالي، بعد حذف ست حزم شاذة. ص <bdi dir="ltr">6-8</bdi></p>
+<h2>السؤالان يؤديان وظيفتين مختلفتين</h2>
+<p><strong>درجات الممارسات:</strong> ننظر إلى عدة مؤشرات معًا لنعرف أيها يساعد النموذج في تقدير العدد. <strong>الدرجة الإجمالية:</strong> ننظر إلى مؤشر ملخص لندرس اتجاه علاقته بالعدد. المقارنة هنا بين حزم مختلفة؛ معرفة أثر تغيير الممارسات مع الزمن تحتاج إلى تصميم وبيانات مناسبين.</p>
+<h2>معامل التحديد <bdi dir="ltr">R²</bdi></h2>
+<p>يقيس مدى تمثيل النموذج للتفاوت في الأعداد مقارنة بخط أساس يتوقع المتوسط. في التفسير المعتاد، قيمة قريبة من الصفر تعني فائدة محدودة على هذا المقياس، وقيمة سالبة تعني أداء أسوأ من توقع المتوسط ضمن التقييم.</p>
+<table class="facts"><colgroup><col style="width:35%"><col style="width:20%"><col></colgroup><thead><tr><th>التحليل والنموذج</th><th><bdi dir="ltr">R²</bdi></th><th>كيف تقرأه</th></tr></thead><tbody>
+<tr><td data-paper><bdi dir="ltr">RQ1: OLS</bdi></td><td data-paper><bdi dir="ltr">0.09</bdi></td><td>تفسير محدود للتفاوت</td></tr>
+<tr><td data-paper><bdi dir="ltr">RQ1: DT</bdi></td><td data-paper><bdi dir="ltr">0.11</bdi></td><td>تفسير محدود للتفاوت</td></tr>
+<tr><td data-paper><bdi dir="ltr">RQ1: GB</bdi></td><td data-paper><bdi dir="ltr">0.12</bdi></td><td>الأعلى بين الأربعة، لكنه محدود</td></tr>
+<tr><td data-paper><bdi dir="ltr">RQ1: RF</bdi></td><td data-paper><bdi dir="ltr">-0.008</bdi></td><td>أقل من خط أساس المتوسط</td></tr>
+<tr><td data-paper><bdi dir="ltr">RQ2: Linear</bdi></td><td data-paper><bdi dir="ltr">0.04</bdi></td><td>تفسير ضعيف جدًا للتفاوت</td></tr>
+</tbody></table>
+<p class="small">الأرقام من ص8: جدول <bdi dir="ltr">III</bdi> لتحليل الممارسات، وفقرة <bdi dir="ltr">V-B</bdi> لتحليل الإجمالي. <bdi dir="ltr">OLS</bdi> انحدار خطي بالمربعات الصغرى؛ <bdi dir="ltr">DT</bdi> شجرة قرار؛ <bdi dir="ltr">GB</bdi> تعزيز تدريجي؛ <bdi dir="ltr">RF</bdi> غابة عشوائية. معرفة دور النماذج أهم هنا من تفاصيل خوارزمياتها.</p>
+<h2>كيف تتجنب تفسير النسبة بطريقة خاطئة</h2>
+<p><strong>مثال تعليمي عام:</strong> قيمة <bdi dir="ltr">R²=0.20</bdi> تشير إلى تفسير نحو 20% من التفاوت في الأعداد وفق التقييم. ليست نسبة ثغرات مكتشفة، ولا نسبة توقعات صحيحة، ولا نسبة تقليل للثغرات.</p>
+<p><strong>أهمية المتغير داخل النموذج</strong> تعني مساهمته في التقدير وفق النموذج والبيانات. إثبات أن تغيير الممارسة يقلل الثغرات يتطلب أدلة سببية إضافية. وضعف النموذج وحده لا يثبت عدم جدوى الممارسة.</p></main><footer class="footer"><span>مراجعة دراسة الممارسات الأمنية</span><span>3 / 6</span></footer></section><section class="sheet"><main class="content"><h1>القيود: لماذا نحتاج إلى تفسير النتائج</h1>
+<p data-paper>أهم التحديات: نقص بيانات الثغرات، ودقة درجات الممارسات، والتوقيت والعوامل المربكة. وسُحبت توصية <bdi dir="ltr">Pinned-Dependencies</bdi> لقصور تغطية الفحص آنذاك لملفات الحزم. ص <bdi dir="ltr">9-11</bdi></p>
+<h2>المسجل والموجود فعلًا</h2>
+<p>عدد البلاغات يصف ما اكتُشف ووُثّق في المصادر التي نستخدمها. قد توجد مشكلات لم تُكتشف أو لم تُسجل هناك. قبل مقارنة عددين، اسأل عن التغطية وطرق الكشف والإبلاغ وتوقيت جمع البيانات.</p>
+<h2>الارتباط والسببية</h2>
+<p><strong>الارتباط:</strong> نلاحظ نمطًا بين متغيرين في البيانات. <strong>السببية:</strong> توجد أدلة تدعم أن تغيير أحدهما أحدث تغيرًا في الآخر. لا يكفي ظهور درجة أعلى وعدد أكبر معًا لإثبات أن الممارسة سببت الثغرات.</p>
+<p><strong>مثال تعليمي:</strong> اكتُشفت ثغرات قديمة فشدد الفريق المراجعة، فأصبحت درجته مرتفعة مع سجل بلاغات كبير. واحتمال آخر أن تحسين الكشف كشف مشكلات موجودة. نحتاج إلى بيانات إضافية لتحديد التفسير، بدل الجزم بأحدهما.</p>
+<h2>ثلاثة أوقات لا ينبغي دمجها</h2>
+<p>وقت إدخال الخطأ إلى الكود، ووقت اكتشافه أو الإبلاغ عنه، ووقت تطبيق الممارسة. مثال افتراضي: خطأ أُدخل في يناير، وتشديد للمراجعة في مارس، واكتشاف للخطأ في مايو. الاكتشاف لاحق لتحسين الممارسة، بينما الخطأ أقدم منها.</p>
+<h2>قد يكون الخلل في أداة القياس</h2>
+<p><strong>مثال عام:</strong> أداة تبحث عن إعداد في ملف محدد، بينما المشروع يضع إعدادًا مكافئًا في ملف آخر لا تفحصه. عندئذ لا تمثل الدرجة المنخفضة حقيقة التطبيق بالضرورة. نحدد النطاق ونصحح التغطية ونتحقق من النتائج.</p>
+<p>تثبيت إصدار مكتبة يعني تحديد الإصدار المستخدم بدل قبول تغيره بلا ضابط. قياس هذه الممارسة يحتاج إلى مراعاة ملفات المشروع ونظام إدارة تبعياته. الوصف التاريخي للأداة في ورقة قديمة لا يثبت سلوك إصدارها الحالي.</p>
+<h2>اختيار العينة وحدود التعميم</h2>
+<p>راجع عينة الصفحة الأولى: وجود بلاغات كان جزءًا من اختيار البيانات. التعميم على مجموعات أخرى يحتاج إلى تحقق. كذلك حذف بيانات غير حاسمة أو قيم شاذة قد يغير ما تمثله العينة، حتى عندما يساعد على بناء التحليل.</p></main><footer class="footer"><span>مراجعة دراسة الممارسات الأمنية</span><span>4 / 6</span></footer></section><section class="sheet"><main class="content"><h1>أسئلة مراجعة مع إجابات قصيرة</h1>
+<div class="question"><h2>1 ما السؤال المركزي الذي أشرحه في السمينار</h2><p>هل ترتبط مؤشرات تطبيق الممارسات الأمنية بأعداد الثغرات المبلّغ عنها؟ أذكر العينة والمنهج والنتائج والقيود بالرجوع إلى الصفحة الأولى والثالثة.</p></div>
+<div class="question"><h2>2 هل العدد الذي يخرجه نموذج التقدير تنبيه أمني</h2><p>هو تقدير عددي. لا يحدد موقع مشكلة أو نوعها، ولا يثبت وجود مشكلة محددة. راجع مثال الجامعة في الصفحة الثانية.</p></div>
+<div class="question"><h2>3 لماذا نحجب العدد المسجل أثناء الاختبار</h2><p>حتى نقيّم قدرة النموذج على التقدير لحالات لم يتدرب عليها، ثم نقارن توقعاته بالمعلومات المسجلة.</p></div>
+<div class="question"><h2>4 هل معامل التحديد هو نسبة كشف أو إصلاح</h2><p>يقيس التفاوت الذي يمثله النموذج مقارنة بخط الأساس. ليست قيمته نسبة ثغرات مكتشفة أو معالجة.</p></div>
+<div class="question"><h2>5 هل أهمية ممارسة في نموذج تثبت تأثيرها السببي</h2><p>تعبر عن أهميتها داخل التحليل؛ إثبات أثر تغييرها يحتاج إلى تصميم وأدلة إضافية تراعي العوامل الأخرى والتوقيت.</p></div>
+<div class="question"><h2>6 هل ضعف التقدير يثبت أن الممارسة بلا فائدة</h2><p>قد يكون القياس ناقصًا، أو توجد عوامل لا يغطيها النموذج، أو تكون النتيجة المستهدفة ناقصة التسجيل. ننسب الحكم إلى النموذج والبيانات والغرض المقاس.</p></div>
+<div class="question"><h2>7 هل البلاغات الأكثر تعني دائمًا أمنًا أسوأ</h2><p>نحتاج إلى معرفة مدى الاستخدام والفحص والإبلاغ وسياق المشروع. الزيادة قد تعكس اكتشافًا أوسع، ولا نحسم تفسيرها من العدد وحده.</p></div>
+<div class="question"><h2>8 هل تاريخ الإبلاغ يحدد تاريخ نشوء الخطأ</h2><p>قد يكون الخطأ أقدم من البلاغ. نميّز بين الإدخال والاكتشاف وتطبيق الممارسة قبل تفسير العلاقة الزمنية.</p></div>
+<div class="question"><h2>9 ماذا نسجل إذا تعذر الحصول على الأدلة</h2><p>نسجل تعذّر التحقق وسببه. غياب نتيجة حاسمة لا يثبت أن الضابط غير مطبق.</p></div>
+<div class="question"><h2>10 هل تضيف هذه الدراسة تميّزًا تلقائيًا لمشروعنا</h2><p>تفيد في تصميم قياس موثوق وفهم حدوده. إثبات التميّز يحتاج إلى مقارنة الحلول الأقرب وتحسين محدد وتقييم فائدته.</p></div>
+<p class="small"><strong>اختبار ذاتي:</strong> غطِّ الإجابات واشرح بكلماتك، ثم صحح أي خلط بين التقدير والكشف أو بين الارتباط والسببية. راجع الأرقام في الصفحة الثالثة كما هي، دون تحويلها إلى نسب دقة.</p></main><footer class="footer"><span>مراجعة دراسة الممارسات الأمنية</span><span>5 / 6</span></footer></section><section class="sheet"><main class="content"><h1>كيف نستفيد في مشروعنا</h1>
+<p>نطاق منصتنا المقترح هو تقييم ضوابط مستودعات <bdi dir="ltr">GitHub</bdi> وتسجيل الأدلة والنتائج ومتابعة المعالجة وإعادة التحقق. لم نثبت هنا تنفيذ هذه الوظائف أو اختبارها.</p>
+<h2>متطلبات تفكير مستخلصة للمشروع</h2>
+<p><strong>تعريف الفحص:</strong> نحدد الضابط والفرع والشروط التي نفحصها. <strong>تفسير القرار:</strong> نربط النتيجة بما قرأناه فعلًا ووقت القراءة ونطاقها. <strong>عدم الحسم:</strong> نعالج نقص الصلاحيات وأخطاء الاتصال بوصفها أسبابًا لتعذر التحقق.</p>
+<p>نفصل بين تقييم تطبيق الضابط وفحص ثغرات الكود. وعندما نصف الحالة الإجمالية، نوضح طريقة جمع النتائج وحدودها، ونراجع القرارات التفصيلية التي يخفيها الرقم الملخص.</p>
+<h2>مثال قبول لفحص مقترح</h2>
+<p class="small">مثال تعليمي لفحص اشتراط مراجعة قبل الدمج في فرع محدد، بافتراض تعريف شروطه ونطاقه بوضوح:</p>
+<table><colgroup><col style="width:60%"><col></colgroup><thead><tr><th>الحالة المعروفة مسبقًا</th><th>النتيجة المتوقعة</th></tr></thead><tbody>
+<tr><td>شرط المراجعة مطبّق ضمن النطاق</td><td>مستوفٍ للشرط</td></tr>
+<tr><td>شرط المراجعة غير مطبّق</td><td>غير مستوفٍ</td></tr>
+<tr><td>تعذّرت قراءة الإعدادات</td><td>تعذّر التحقق مع السبب</td></tr>
+</tbody></table>
+<p>هذه حالات أولية لتخطيط التحقق. نضيف الحالات التي يفرضها تعريف الضابط وتبعياته. لم تُنفذ اختبارات على منصتنا من أجل هذه المذكرة.</p>
+<h2>خطة الدراسة والمراجعة</h2>
+<p><strong>لفهم الدراسة من البداية:</strong> اقرأ الصفحات 1 إلى 4 بالترتيب، ثم أجب عن أسئلة الصفحة الخامسة دون النظر إلى الإجابات. <strong>قبل السمينار:</strong> راجع الصفحة الأولى وأرقام الثالثة وأسئلة الخامسة. إذا التبس دور النموذج، ارجع إلى مثال الجامعة في الثانية.</p>
+<h2>المصادر والرجوع إلى النص الأصلي</h2>
+<p class="small">[1] <a href="https://arxiv.org/pdf/2210.14884v2">النص الكامل، نسخة arXiv v2</a> · <a href="https://arxiv.org/abs/2210.14884">سجل النسخة</a> · <a href="https://conf.researchr.org/details/icse-2023/icse-2023-SEIP/36/Do-Software-Security-Practices-Yield-Fewer-Vulnerabilities-">صفحة المؤتمر الرسمية</a>.</p>
+<p class="small">[2] <a href="https://doi.org/10.1109/ICSE-SEIP58684.2023.00032">سجل النشر عبر DOI</a>. أول نسخة على <bdi dir="ltr">arXiv</bdi> في 2022؛ سنة نشر المؤتمر المعتمدة هنا 2023.</p>
+<p class="small">أرقام الصفحات في المذكرة تخص ملف الأصل ذي 12 صفحة: السؤال والخلفية ص <bdi dir="ltr">1-2</bdi>؛ الممارسات والمنهج ص <bdi dir="ltr">4-7</bdi>؛ الأرقام ص8؛ المناقشة والقيود ص <bdi dir="ltr">9-11</bdi>. الشرح والأمثلة التعليمية بصياغة عربية مستقلة، والحقائق البحثية من المرجع الأصلي.</p></main><footer class="footer"><span>مراجعة دراسة الممارسات الأمنية</span><span>6 / 6</span></footer></section></body></html>

@@ -1,0 +1,36 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ما يفيد مشروعنا: الامتثال المستمر داخل DevSecOps</title><style>.ref{white-space:nowrap}.footer span:last-child{direction:ltr;unicode-bidi:isolate}
+@page{size:Letter;margin:0}*{box-sizing:border-box}body{margin:0;background:#eceef0;font-family:Arial,sans-serif;color:#111;font-size:13.1pt;line-height:1.52}.sheet{position:relative;width:8.5in;height:11in;margin:22px auto;background:white;padding:.60in .68in .58in;break-after:page}.sheet:last-child{break-after:auto}.content{height:9.53in}h1{font-size:20pt;line-height:1.3;font-weight:700;color:#000;margin:0 0 12px}h2{font-size:14.3pt;color:#000;line-height:1.35;margin:15px 0 5px;font-weight:700}p{margin:0 0 10px}.subtitle{font-size:13pt;color:#333;margin-bottom:13px}.paper-title{direction:ltr;text-align:left;font-size:12.2pt;line-height:1.35;margin-bottom:9px}.meta{font-size:11.1pt;color:#444;margin-bottom:12px}.small{font-size:10.4pt;line-height:1.45;color:#333}table{border-collapse:collapse;width:100%;margin:10px 0 12px;table-layout:fixed;font-size:12.1pt;line-height:1.45}th,td{border:1px solid #d9d9d9;padding:8px 10px;vertical-align:middle;text-align:right}th{background:#dce8ef;color:#000;font-weight:700}tbody tr:nth-child(even){background:#f7f8f9}.facts{font-size:11.8pt}.question h2{margin-top:12px;font-size:13.5pt}.question p{margin-bottom:6px;font-size:12.4pt;line-height:1.46}.footer{position:absolute;bottom:.27in;left:.68in;right:.68in;font-size:10pt;color:#555;display:flex;justify-content:space-between;align-items:center}a{color:#174f74;text-decoration:underline}bdi{unicode-bidi:isolate}strong{font-weight:700}@media screen and (max-width:850px){.sheet{margin:12px auto;max-width:100%;height:auto;min-height:11in}.content{height:auto;min-height:9.53in}.footer{position:relative;bottom:auto;left:auto;right:auto;margin-top:20px}}@media print{body{background:white}.sheet{margin:0}a{color:#174f74}h1,h2,p,table,.question{orphans:2;widows:2}}
+bdi{white-space:nowrap}</style></head><body><section class="sheet"><main class="content"><h1>ما يفيد مشروعنا من الدراسة</h1>
+<p class="subtitle">مذكرة عربية مختصرة للمراجعة والسمينار</p>
+<p class="paper-title" data-paper>Integrating Continuous Compliance into DevSecOps Pipelines: A Data Engineering Perspective</p>
+<p class="meta" data-paper><bdi dir="ltr">Aleksandr Zakharchenko · Software · 2026</bdi><br>الدراسة الأصلية: 24 صفحة · هذه المذكرة: صفحتان</p>
+<h2>الفكرة التي تهمنا</h2>
+<p data-paper>تقترح الدراسة إطارًا لدمج التحقق من المتطلبات داخل خطوات التطوير، باستخدام سياسات قابلة للتنفيذ وأدلة مرتبطة بقرارات التقييم. ويتيح تصميمها تتبّع الصلة بين السياسة والبرنامج والأدلة. <span class="ref">[1، القسمان 3 و4]</span></p>
+<p><strong>المعنى ببساطة:</strong> الامتثال هنا هو استيفاء شرط محدد. لكي تكون نتيجة منصتنا مفهومة، نوضح: ماذا فحصنا؟ وما الدليل؟ ومتى جمعناه؟ ولماذا حكمنا بأن الشرط مستوفٍ أو غير مستوفٍ؟</p>
+<h2>كيف نستفيد منها في منصتنا المقترحة</h2>
+<p class="small">ما يلي ترجمة للأفكار إلى اقتراحات تصميم لمشروعنا؛ ليس وصفًا لمنصة GitHub اختبرها الباحث.</p>
+<table><colgroup><col style="width:27%"><col></colgroup><thead><tr><th>الفكرة</th><th>تطبيقها المقترح في مشروعنا</th></tr></thead><tbody>
+<tr><td>شرط واضح</td><td>نحوّل عبارة «المستودع آمن» إلى فحوص محددة. مثلًا: الفرع الرئيسي يشترط مراجعة واحدة على الأقل قبل الدمج، ضمن نطاق واستثناءات معلومة.</td></tr>
+<tr><td>دليل قابل للمراجعة</td><td>نحفظ المعلومات التي اعتمد عليها الفحص، مع مصدرها ووقت جمعها والمستودع والفرع المعنيين.</td></tr>
+<tr><td>قرار يمكن تفسيره</td><td>نربط النتيجة بالدليل ومعيار الفحص وإصداره؛ لنعرف لماذا صدرت، وكيف أثّر تغيير المعيار عليها.</td></tr>
+<tr><td>تتبّع عبر الزمن</td><td>نحفظ كل تقييم كتسجيل مستقل. وبعد المعالجة نضيف تقييمًا جديدًا، مع إبقاء السابق للمراجعة والمقارنة.</td></tr>
+</tbody></table>
+<h2>حدّ الحكم الذي نصدره</h2>
+<p>إذا تحققنا من إعدادات المراجعة، نستطيع الحكم على <strong>استيفاء شرط الإعدادات ضمن النطاق المفحوص</strong>. أما جودة المراجعة البشرية وخلو الكود من الثغرات فهما سؤالان يحتاجان إلى أدلة أخرى.</p>
+<p>لذلك تكون نتيجة الفحص دقيقة ومحددة، ويظهر معها النطاق والتوقيت بدل الاكتفاء بدرجة عامة يصعب تفسيرها.</p></main><footer class="footer"><span>مراجعة مختصرة · الامتثال المستمر</span><span>1 / 2</span></footer></section><section class="sheet"><main class="content"><h1>المثال وحدود الدليل العلمي</h1>
+<h2>مثال تعليمي: شرط المراجعة قبل الدمج</h2>
+<p>نفترض أن سياسة المشروع تشترط مراجعة واحدة قبل الدمج في الفرع الرئيسي. تقرأ منصتنا الإعدادات المتاحة عبر <bdi dir="ltr">API</bdi> بصلاحيات مناسبة، وتقارنها بمعيار الفحص المحدد.</p>
+<table><colgroup><col style="width:27%"><col></colgroup><thead><tr><th>ما تحققنا منه</th><th>النتيجة التي نسجلها</th></tr></thead><tbody>
+<tr><td>الشرط مفروض</td><td>مستوفٍ لهذا الشرط، مع الدليل والنطاق والتوقيت.</td></tr>
+<tr><td>الشرط غير مفروض</td><td>غير مستوفٍ، وتُنشأ مهمة معالجة إذا كان ذلك ضمن متطلبات المنصة.</td></tr>
+<tr><td>تعذرت قراءة الإعدادات</td><td>تعذّر التحقق، مع السبب؛ لا نفترض الاستيفاء أو عدمه.</td></tr>
+</tbody></table>
+<p>إذا تغيّرت الإعدادات اليوم، لا نستبدل نتيجة الأمس؛ نضيف تقييم اليوم ونحدّث الحالة المعروضة. وإذا تعذّر الفحص، نظهر آخر نتيجة بتوقيتها بوصفها نتيجة سابقة.</p>
+<h2>ماذا اختبر الباحث فعليًا؟</h2>
+<p data-paper>اختبر نموذجًا محليًا باستخدام <bdi dir="ltr">Docker</bdi>، بتنفيذ المراحل بالتتابع وعشر تشغيلات متتالية بالإعدادات نفسها. شمل المسار بناء صورة حاوية، وإنتاج قائمة مكوناتها <bdi dir="ltr">(SBOM)</bdi> وفحص الثغرات، وتقييم سياسة بأداة <bdi dir="ltr">OPA</bdi>، وحفظ الأدلة وتوقيع نتائج الامتثال رقميًا، مع قياس أزمنة المراحل. <span class="ref">[1، القسم 6]</span></p>
+<p data-paper>تظل آليات الفرض أثناء التشغيل والمعالجة الذاتية مقترحات معمارية غير مثبتة تجريبيًا في الورقة. <span class="ref">[1، القسم 7.4]</span></p>
+<p><strong>قراءتنا لهذه النتائج:</strong> تدعم إمكانية تنفيذ مسار محدود يربط الفحص بقرار وأدلة. لكنها لا تكفي لإثبات توفير جهد فريق حقيقي، أو نجاح منصة تقييم مستودعات كاملة.</p>
+<h2>ما نأخذه وما نحتاج إلى إثباته</h2>
+<p>نأخذ وضوح الفحص وربط القرار بالدليل والتاريخ، ونختار تخزينًا يناسب حجم مشروعنا. اختيار أدوات الدراسة أو بنية تخزينها يحتاج إلى حاجة فعلية في متطلباتنا.</p>
+<p>لتقييم منصتنا، نتحقق من صحة النتائج على حالات معلومة، ومن كفاية الأدلة لتفسيرها، ونقارن الوقت والجهد لمهام متكافئة مع المنصة وبدونها. وجود هذه الوظائف وحده لا يثبت تميزنا؛ نحتاج إلى مقارنة واضحة وفائدة قابلة للقياس.</p>
+<p class="small"><strong>المصدر:</strong> [1] <a href="https://www.mdpi.com/2674-113X/5/1/6">نص الدراسة لدى الناشر</a> · <a href="https://doi.org/10.3390/software5010006"><bdi dir="ltr">DOI: 10.3390/software5010006</bdi></a><br>للقراءة الانتقائية: الأقسام 3 و4 للأفكار، و6 للتجربة، و7.4 للقيود.</p></main><footer class="footer"><span>مراجعة مختصرة · الامتثال المستمر</span><span>2 / 2</span></footer></section></body></html>

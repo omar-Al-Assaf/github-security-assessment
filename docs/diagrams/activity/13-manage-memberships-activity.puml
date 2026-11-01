@@ -1,0 +1,55 @@
+@startuml 13-manage-memberships-activity
+title إدارة العضويات والأدوار — UC01
+
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam ArrowColor #526578
+skinparam activity {
+  BackgroundColor #F1F7F8
+  BorderColor #526578
+  FontColor #17354A
+  DiamondBackgroundColor #FAF8F2
+  DiamondBorderColor #9A8051
+}
+
+start
+:يختار المسؤول المؤسسة\nويفتح إدارة العضويات;
+:التحقق من الجلسة والعضوية\nوصلاحية إدارة المؤسسة;
+if (الفاعل مخول؟) then ([مخول])
+  :عرض أعضاء المؤسسة\nوأدوارهم وحالات عضوياتهم;
+else ([else])
+  :رفض الإجراء دون كشف البيانات;
+  stop
+endif
+
+:يختار المسؤول الإضافة أو تعديل الدور\nأو تعطيل العضوية أو إعادة تفعيلها;
+:تحديد المستخدم والدور أو الحالة\nومراجعة التغيير وتأكيده;
+:فحص المراجع ومنع التكرار\nوالتحقق من بقاء مسؤول فعال;
+note right
+  يمنع تعطيل آخر مسؤول فعال أو خفض دوره.
+  يتحقق الشرط أيضًا داخل عملية الحفظ.
+end note
+
+if (التغيير صالح؟) then ([صالح])
+  :إعادة التحقق من التفويض والنسخة\nوحفظ العضوية وسجل التدقيق;
+else ([else])
+  :عرض سبب الرفض\nدون اعتماد التغيير;
+  stop
+endif
+
+if (نجح الحفظ؟) then ([تم الحفظ])
+  :عرض العضوية المحدثة\nوتطبيق صلاحياتها على الطلبات اللاحقة;
+else ([else])
+  :توضيح سبب التعذر\nمع إبقاء الحالة السابقة;
+endif
+stop
+
+legend bottom
+  تصميم مستهدف • الدور يخص العضوية في مؤسسة محددة.
+  تعطيل العضوية لا يمحو التقييمات أو التاريخ.
+  تفاصيل البدائل في وصف UC01.
+endlegend
+@enduml

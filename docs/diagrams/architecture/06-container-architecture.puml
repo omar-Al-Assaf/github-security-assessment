@@ -1,0 +1,49 @@
+@startuml 06-container-architecture
+title المعمارية العامة — Container Diagram
+
+top to bottom direction
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam nodesep 55
+skinparam ranksep 65
+skinparam ArrowColor #526578
+skinparam ArrowThickness 1.5
+skinparam rectangle {
+  BackgroundColor #F1F5F9
+  BorderColor #526578
+  FontColor #17354A
+}
+skinparam database {
+  BackgroundColor #F1F7F8
+  BorderColor #526578
+  FontColor #17354A
+}
+
+actor "مستخدم المنصة\nمتصفح الويب" as User
+
+rectangle "منصة التقييم" {
+  rectangle "Web\nASP.NET Core · Razor Pages\n\nالواجهة والصلاحيات\nوتسجيل الطلبات وعرض النتائج" as Web #E6F2F2
+  rectangle "Worker\n.NET · C#\n\nجمع البيانات وتنفيذ الفحوص\nوتخطيط الإصلاح" as Worker #E6F2F2
+  database "PostgreSQL\n\nالمؤسسات والسياسات والمهام\nوالأدلة والنتائج والمخالفات والخطط" as DB
+}
+
+rectangle "GitHub\nنظام خارجي" as GitHub
+
+User -down-> Web : الطلبات والنتائج\nHTTPS
+User -[hidden]right-> GitHub
+Web -[hidden]right-> Worker
+Web -down-> DB : حفظ الطلبات والسياسات\nوقراءة الحالات والنتائج
+Worker -down-> DB : استلام المهام المحفوظة\nوحفظ مخرجات التنفيذ
+Web -up-> GitHub : إعداد الاتصال\nHTTPS
+Worker -up-> GitHub : جمع البيانات\nHTTPS
+
+legend bottom
+  تصميم مستهدف • Web وWorker عمليتان منفصلتان تستخدمان وحدات المشروع نفسها.
+  تبادل العمل عبر المهام المحفوظة؛ مكتبة التنفيذ تُحدد لاحقًا.
+  يستخدم Web وWorker تكامل GitHub App ضمن الصلاحيات المعتمدة.
+  الإصلاح على GitHub يدوي، وAWS تكامل مستقبلي مشروط بالوقت.
+endlegend
+@enduml

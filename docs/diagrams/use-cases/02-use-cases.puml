@@ -1,0 +1,95 @@
+@startuml 02-use-cases-admin
+title المسؤول — وظائف الإدارة
+left to right direction
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam nodesep 35
+skinparam ranksep 55
+skinparam ArrowColor #365A72
+skinparam ArrowThickness 1.5
+skinparam usecaseBackgroundColor #F1F7F8
+skinparam usecaseBorderColor #526578
+
+actor "المسؤول\nAdmin" as Admin
+rectangle "منصة تقييم الضوابط الأمنية وإدارة الأدلة" {
+  usecase "UC01\nإدارة العضويات\nوالأدوار" as UC01
+  usecase "UC02\nإدارة اتصال\nGitHub" as UC02
+  usecase "UC03\nضبط سياسة الفحص\nوأهداف السماح والمنع" as UC03
+}
+Admin -- UC01
+Admin -- UC02
+Admin -- UC03
+legend bottom
+  الخط يمثل مشاركة الدور في الوظيفة.
+  للمسؤول صلاحيات التشغيل والاطلاع أيضًا وفق مصفوفة الصلاحيات.
+  يعرض هذا المنظر وظائف الإدارة.
+endlegend
+@enduml
+
+@startuml 02-use-cases-evaluator
+title حالات الاستخدام — المقيّم
+left to right direction
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam nodesep 25
+skinparam ranksep 55
+skinparam ArrowColor #365A72
+skinparam ArrowThickness 1.5
+skinparam usecaseBackgroundColor #F1F7F8
+skinparam usecaseBorderColor #526578
+
+actor "المقيّم\nEvaluator" as Evaluator
+rectangle "منصة تقييم الضوابط الأمنية وإدارة الأدلة" {
+  usecase "UC04\nتحديد نطاق\nالتقييم" as UC04
+  usecase "UC05\nتشغيل تقييم الضوابط\nالفحوص الـ٢٤" as UC05
+  usecase "UC06\nمتابعة معالجة\nالمخالفات" as UC06
+  usecase "UC07\nطلب خطة إصلاح\nللحالات المدعومة" as UC07
+  usecase "UC08\nإعادة التحقق\nبعد المعالجة" as UC08
+  usecase "UC09\nمراجعة النتائج\nوالأدلة والتاريخ" as UC09
+  usecase "UC10\nعرض التقارير\nوطباعتها" as UC10
+}
+Evaluator -- UC04
+Evaluator -- UC05
+Evaluator -- UC06
+Evaluator -- UC07
+Evaluator -- UC08
+Evaluator -- UC09
+Evaluator -- UC10
+legend bottom
+  الخط يمثل مشاركة الدور في الوظيفة، وليس ترتيب التنفيذ.
+  طلب خطة الإصلاح مستقل، وتطبيقها على GitHub يدوي.
+endlegend
+@enduml
+
+@startuml 02-use-cases-reviewer
+title حالات الاستخدام — المراجع
+left to right direction
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam nodesep 35
+skinparam ranksep 55
+skinparam ArrowColor #365A72
+skinparam ArrowThickness 1.5
+skinparam usecaseBackgroundColor #F1F7F8
+skinparam usecaseBorderColor #526578
+
+actor "المراجع\nReviewer" as Reviewer
+rectangle "منصة تقييم الضوابط الأمنية وإدارة الأدلة" {
+  usecase "UC09\nمراجعة النتائج\nوالأدلة والتاريخ" as UC09
+  usecase "UC10\nعرض التقارير\nوطباعتها" as UC10
+}
+Reviewer -- UC09
+Reviewer -- UC10
+legend bottom
+  الخط يمثل مشاركة الدور بصلاحية الاطلاع.
+endlegend
+@enduml

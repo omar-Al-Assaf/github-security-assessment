@@ -1,0 +1,52 @@
+@startuml
+title مخطط سياق النظام
+
+top to bottom direction
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam ArrowFontSize 18
+skinparam ArrowColor #526578
+skinparam ArrowThickness 1.5
+skinparam defaultTextAlignment center
+skinparam nodesep 40
+skinparam ranksep 80
+skinparam padding 16
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam rectangle {
+  BackgroundColor #F1F5F9
+  BorderColor #526578
+  FontSize 22
+  FontColor #17354A
+}
+skinparam actor {
+  BorderColor #526578
+  FontColor #17354A
+}
+skinparam note {
+  BackgroundColor #FAF8F2
+  BorderColor #C9B68F
+  FontSize 17
+}
+
+actor "المسؤول\nAdmin" as Admin
+actor "المقيّم\nEvaluator" as Evaluator
+actor "المراجع\nReviewer" as Reviewer
+
+rectangle "منصة تقييم الضوابط الأمنية\nوإدارة الأدلة\n\nالتقييم • الأدلة • خطط الإصلاح" as Platform #E6F2F2
+rectangle "GitHub\n\nإعدادات المستودعات والقواعد\nوبيانات الخدمات الأمنية" as GitHub
+
+Admin -right-> Platform : إدارة الربط والسياسة\nوالعضويات
+Evaluator -down-> Platform : طلب التقييم والإصلاح\nومتابعة المعالجة
+Reviewer -left-> Platform : مراجعة النتائج\nوالأدلة والتقارير
+
+Platform -down-> GitHub : قراءة البيانات\nالمصرح بها
+Admin -[dashed,norank]-> GitHub : تطبيق الإصلاح\nيدويًا
+
+note bottom of GitHub
+  تصميم مستهدف يشمل ٢٤ فحصًا معتمدًا.
+  AWS تكامل مستقبلي مشروط بالوقت.
+end note
+
+@enduml

@@ -1,0 +1,55 @@
+@startuml 09-assessment-scope-activity
+title تحديد نطاق التقييم — UC04
+
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam ArrowColor #526578
+skinparam activity {
+  BackgroundColor #F1F7F8
+  BorderColor #526578
+  FontColor #17354A
+  DiamondBackgroundColor #FAF8F2
+  DiamondBorderColor #9A8051
+}
+
+start
+:يختار المقيّم المؤسسة\nويطلب إنشاء نطاق أو تعديله;
+:التحقق من التفويض\nوانتماء النطاق إلى المؤسسة;
+if (الطلب مخول؟) then ([مخول])
+  :عرض الاتصال والمستودعات المصرح بها\nوالفحوص ونسخ السياسات المتاحة;
+else ([else])
+  :رفض الإجراء مع توضيح السبب;
+  stop
+endif
+
+:يختار المقيّم المستودعات والفحوص\nوالاتصال ونسخة السياسة;
+:تحديد نطاق كل فحص\nوالتحقق من الاختيار والمراجع;
+note right
+  فحوص الفروع تستهدف الفرع الافتراضي.
+  بقية الفحوص تتبع نطاق تعريفها.
+end note
+
+if (الاختيار صالح ومصرح به؟) then ([صالح ومصرح])
+  :عرض ملخص النطاق\nوحدود الوصول المعروفة;
+else ([else])
+  :عرض ما يلزم تصحيحه\nدون اعتماد الاختيار;
+  stop
+endif
+
+:يراجع المقيّم الملخص\nويؤكد حفظ النطاق;
+:إعادة التحقق من التفويض والنسخة\nوحفظ النطاق وسجل الإجراء;
+if (نجح الحفظ؟) then ([تم الحفظ])
+  :عرض مرجع النطاق المحفوظ\nليختاره المقيّم لاحقًا في UC05;
+else ([else])
+  :توضيح سبب التعذر\nدون اعتماد التغيير;
+endif
+stop
+
+legend bottom
+  تصميم مستهدف • تفاصيل البدائل في وصف UC04.
+  حفظ النطاق لا يشغّل التقييم ولا يغيّر إعدادات GitHub.
+endlegend
+@enduml

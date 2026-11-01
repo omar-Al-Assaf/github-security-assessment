@@ -1,0 +1,56 @@
+@startuml 08-policy-and-objectives-activity
+title ضبط السياسة وأهداف الأطراف — UC03
+
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam ArrowColor #526578
+skinparam activity {
+  BackgroundColor #F1F7F8
+  BorderColor #526578
+  FontColor #17354A
+  DiamondBackgroundColor #FAF8F2
+  DiamondBorderColor #9A8051
+}
+
+start
+:يختار المسؤول المؤسسة والسياسة\nويطلب الإنشاء أو التعديل;
+:التحقق من التفويض\nوانتماء المراجع إلى المؤسسة;
+
+if (الطلب مخول؟) then ([مخول])
+  :عرض كتالوج الفحوص\nوالنسخة الحالية إن وجدت;
+else ([else])
+  :رفض الطلب مع توضيح السبب;
+  stop
+endif
+
+:يضبط المسؤول الفحوص المطلوبة\nوقيمها وحدودها والقوائم المعتمدة;
+:يحدد أهداف السماح والمنع\nوحدود التعديل عند إعداد الإصلاح;
+note right
+  أهداف الإصلاح اختيارية للتقييم العادي.
+  تحدد الطرف والعملية والنطاق والقرار المطلوب.
+end note
+:التحقق من القيم والمراجع\nواكتشاف التعارضات القابلة للإثبات;
+
+if (المدخلات صالحة ومتسقة؟) then ([صالحة ومتسقة])
+  :عرض ملخص التغييرات\nومراجعة المسؤول وتأكيده الحفظ;
+else ([else])
+  :عرض الأخطاء المطلوب تصحيحها\nدون اعتماد التغييرات;
+  stop
+endif
+
+:إعادة التحقق من التفويض والنسخة\nوحفظ إصدار جديد وسجل الإجراء;
+if (نجح الحفظ؟) then ([تم الحفظ])
+  :عرض معرف النسخة الجديدة\nمع إبقاء التقييمات السابقة دون تغيير;
+else ([else])
+  :توضيح سبب التعذر\nدون اعتماد نسخة جديدة;
+endif
+stop
+
+legend bottom
+  تصميم مستهدف • تفاصيل البدائل في وصف UC03.
+  حفظ السياسة لا يغير إعدادات GitHub ولا يشغل تقييمًا تلقائيًا.
+endlegend
+@enduml

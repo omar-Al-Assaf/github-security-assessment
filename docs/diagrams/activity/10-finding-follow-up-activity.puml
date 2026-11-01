@@ -1,0 +1,53 @@
+@startuml 10-finding-follow-up-activity
+title متابعة معالجة المخالفات — UC06
+
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam ArrowColor #526578
+skinparam activity {
+  BackgroundColor #F1F7F8
+  BorderColor #526578
+  FontColor #17354A
+  DiamondBackgroundColor #FAF8F2
+  DiamondBorderColor #9A8051
+}
+
+start
+:يختار المقيّم المؤسسة\nويفتح مخالفة محفوظة;
+:التحقق من صلاحية المتابعة\nوانتماء المخالفة إلى المؤسسة;
+if (الطلب مخول؟) then ([مخول])
+  :عرض النتيجة ودليلها\nوأحدث تحقق وتاريخ المتابعة;
+else ([else])
+  :رفض الإجراء مع توضيح السبب;
+  stop
+endif
+
+:يحدث المقيّم المسؤول أو الحالة\nأو يضيف تعليقًا على المعالجة;
+if (اختير إغلاق إداري؟) then ([إغلاق إداري])
+  :تسجيل السبب وبيان أن الإغلاق\nلا يثبت زوال المخالفة;
+else ([else])
+endif
+:التحقق من القيم والمسؤول المختار\nوحقول التحديث المسموحة;
+if (التحديث صالح؟) then ([صالح])
+  :عرض ملخص التحديث\nومراجعة المقيّم وتأكيده الحفظ;
+else ([else])
+  :عرض الأخطاء المطلوب تصحيحها\nدون اعتماد التحديث;
+  stop
+endif
+
+:إعادة التحقق من التفويض والنسخة\nوحفظ المتابعة وسجل التغيير;
+if (نجح الحفظ؟) then ([تم الحفظ])
+  :عرض المتابعة المحدثة\nمع أحدث نتيجة تحقق ومرجعها;
+else ([else])
+  :توضيح سبب التعذر\nدون اعتماد التغيير;
+endif
+stop
+
+legend bottom
+  تصميم مستهدف • تفاصيل البدائل في وصف UC06.
+  الإغلاق الإداري لا يثبت الإصلاح؛ تأكيد زوال المخالفة عبر UC08.
+endlegend
+@enduml

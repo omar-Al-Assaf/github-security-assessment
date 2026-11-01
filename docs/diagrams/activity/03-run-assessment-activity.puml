@@ -1,0 +1,69 @@
+@startuml 03-run-assessment-activity
+title تشغيل التقييم — UC05
+
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam ArrowColor #526578
+skinparam activity {
+  BackgroundColor #F1F7F8
+  BorderColor #526578
+  FontColor #17354A
+  DiamondBackgroundColor #FAF8F2
+  DiamondBorderColor #9A8051
+}
+
+start
+:يختار المقيّم النطاق والسياسة والفحوص\nويطلب تشغيل التقييم;
+:تتحقق المنصة من صلاحيات المستخدم\nوصحة الطلب وحدود المؤسسة;
+
+if (الطلب مخول وصالح؟) then ([مخول وصالح])
+  :حفظ المهمة ونسخة السياسة والنطاق;
+else ([else])
+  :رفض الطلب مع توضيح السبب;
+  stop
+endif
+
+if (حُفظت المهمة؟) then ([تم الحفظ])
+  :تأكيد القبول وإرجاع مرجع المهمة;
+else ([else])
+  :إعلان تعذر تسجيل الطلب\nدون بدء التنفيذ;
+  stop
+endif
+
+repeat
+  :فحص طلب الإلغاء وحالة الاتصال;
+  if (طلب إلغاء أو اتصال مفصول؟) then ([إلغاء أو فصل])
+    :تسجيل إلغاء المهمة غير النهائية\nوحفظ ما جمع مع بيان عدم اكتماله;
+    :إتاحة الحالة وإنشاء تنبيه داخلي;
+    stop
+  else ([else])
+  endif
+  :بدء محاولة تنفيذ في Worker\nوتسجيل العداد بصورة دائمة;
+  :جمع بيانات GitHub\nوتوثيق الاكتمال والنواقص;
+  :تقييم الفحوص وإقرار المخرجات\nوحالة المهمة مرة واحدة عند الحفظ\nأو تسجيل خطأ المحاولة;
+backward :انتظار محدود قبل إعادة المحاولة;
+repeat while (إعادة محاولة مسموحة؟) is ([خطأ عابر وضمن الحدود]) not ([else])
+
+note right
+  ٣ محاولات إجمالًا كحد أقصى،
+  لمهمة غير نهائية وضمن المهلة.
+  نقص البيانات لا يتحول إلى نجاح.
+end note
+
+if (أُقرّ تقييم نهائي؟) then ([مكتمل أو جزئي])
+  :تجهيز ملخص النتائج\nوبيان الاكتمال أو الجزئية;
+else ([else])
+  :تثبيت فشل المهمة عند إمكان الحفظ\nمع السبب وتاريخ المحاولات;
+endif
+
+:إتاحة الحالة والنتائج والأدلة\nوإنشاء تنبيه داخل التطبيق;
+stop
+
+legend bottom
+  تصميم مستهدف • لا يمثل طلب الويب انتظار تنفيذ Worker.
+  التفاصيل ومسارات الفشل موثقة في وصف UC05.
+endlegend
+@enduml

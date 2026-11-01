@@ -1,0 +1,98 @@
+@startuml 07-github-connection-activity
+title ربط اتصال GitHub — UC02
+
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam ArrowColor #526578
+skinparam activity {
+  BackgroundColor #F1F7F8
+  BorderColor #526578
+  FontColor #17354A
+  DiamondBackgroundColor #FAF8F2
+  DiamondBorderColor #9A8051
+}
+
+start
+:يختار المسؤول المؤسسة\nويطلب ربط GitHub;
+:تتحقق المنصة من الجلسة\nوصلاحية إدارة اتصال المؤسسة;
+if (الطلب مخول؟) then ([مخول])
+  :إنشاء محاولة ربط مؤقتة\nمرتبطة بالمستخدم والمؤسسة;
+else ([else])
+  :رفض الإجراء مع توضيح السبب;
+  stop
+endif
+
+:يفوض المسؤول التطبيق في GitHub\nويثبت التطبيق أو يختار تثبيتًا قائمًا;
+:التحقق من عودة الربط وهوية المستخدم\nوالتثبيت وصلاحية إدارة النطاق;
+if (ثبت التفويض والربط الصحيح؟) then ([ثبت التفويض والربط])
+  :جلب المستودعات المصرح بها\nواختيار المسؤول للنطاق المطلوب;
+else ([else])
+  :عرض سبب التعذر أو انتظار الموافقة\nدون اعتماد اتصال جاهز;
+  stop
+endif
+
+:التحقق من الوصول لبيانات الفحوص\nوتوثيق المتاح والنواقص;
+:حفظ الاتصال والنطاق وحالته\nووقت التحقق وسجل الإجراء;
+if (حُفظ الاتصال؟) then ([تم الحفظ])
+  :عرض حالة الاتصال وحدود التغطية\nللمسؤول;
+else ([else])
+  :إعلان تعذر الحفظ\nدون تأكيد نجاح الربط;
+endif
+stop
+
+legend bottom
+  تصميم مستهدف • تفاصيل البدائل في وصف UC02.
+  لا يكفي معرف التثبيت لإثبات التفويض.
+  الفحوص الـ24 معتمدة؛ الوصول لبياناتها يخضع للتفويض وتوافر الخدمات.
+endlegend
+@enduml
+
+@startuml 07-github-disconnect-activity
+title فصل اتصال GitHub محليًا — UC02
+
+skinparam defaultFontName Dubai
+skinparam defaultFontSize 20
+skinparam titleFontSize 26
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam ArrowColor #526578
+skinparam activity {
+  BackgroundColor #F1F7F8
+  BorderColor #526578
+  FontColor #17354A
+  DiamondBackgroundColor #FAF8F2
+  DiamondBorderColor #9A8051
+}
+
+start
+:يختار المسؤول الاتصال\nويؤكد طلب فصله;
+:التحقق من صلاحية المسؤول\nوانتماء الاتصال إلى مؤسسته;
+if (الطلب مخول؟) then ([مخول])
+  :تعطيل الاتصال وحفظ الإجراء\nومنع بدء مهام جديدة عليه;
+else ([else])
+  :رفض الإجراء مع توضيح السبب;
+  stop
+endif
+
+if (حُفظ تعطيل الاتصال؟) then ([تم الحفظ])
+  :إلغاء المهام المنتظرة المرتبطة به\nوطلب إلغاء الجاري منها;
+  note right
+    يعرض التنفيذ حالته الفعلية.
+    الإلغاء لا يوقف طلب شبكة قائمًا فورًا.
+  end note
+else ([else])
+  :إعلان تعذر الفصل\nدون تأكيد تعطيل الاتصال;
+  stop
+endif
+:الإبقاء على التاريخ والأدلة السابقة\nواتصالات المؤسسات الأخرى;
+:عرض أن الاتصال مفصول محليًا\nوأن تثبيت التطبيق في GitHub لم يُزل;
+stop
+
+legend bottom
+  تصميم مستهدف • إزالة التطبيق من GitHub إجراء منفصل.
+  تفاصيل الإلغاء والاحتفاظ في وصف UC02.
+endlegend
+@enduml

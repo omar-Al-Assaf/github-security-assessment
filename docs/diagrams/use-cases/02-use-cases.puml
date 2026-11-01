@@ -1,5 +1,5 @@
 @startuml 02-use-cases-admin
-title حالات الاستخدام — المسؤول
+title المسؤول — وظائف الإدارة
 left to right direction
 skinparam defaultFontName Dubai
 skinparam defaultFontSize 20
@@ -24,6 +24,8 @@ Admin -- UC02
 Admin -- UC03
 legend bottom
   الخط يمثل مشاركة الدور في الوظيفة.
+  للمسؤول صلاحيات التشغيل والاطلاع أيضًا وفق مصفوفة الصلاحيات.
+  يعرض هذا المنظر وظائف الإدارة.
 endlegend
 @enduml
 
